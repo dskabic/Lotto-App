@@ -1,0 +1,60 @@
+<div class="max-w-3xl mx-auto">
+	<div class="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden">
+		<div class="px-6 py-5 bg-gradient-to-r from-indigo-50 to-white">
+			<h2 class="text-xl sm:text-2xl font-semibold text-gray-900">Current Round</h2>
+			<p class="text-sm text-gray-500 mt-1">Latest round details and status</p>
+		</div>
+
+		<div class="px-6 py-6">
+			<% if (!round) { %>
+				<div class="text-center py-8">
+					<p class="text-gray-600 mb-4">No rounds yet</p>
+				</div>
+			<% } else { %>
+				<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+					<div class="p-4 rounded-lg bg-gray-50">
+						<div class="text-xs uppercase tracking-wide text-gray-500">Round Number</div>
+						<div class="mt-1 text-lg font-semibold text-gray-900">#<%= round.id %></div>
+					</div>
+					<div class="p-4 rounded-lg bg-gray-50">
+						<div class="text-xs uppercase tracking-wide text-gray-500">Status</div>
+						<div class="mt-1">
+							<% if (round.is_active) { %>
+								<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">Active</span>
+							<% } else { %>
+								<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-200 text-gray-800">Closed</span>
+							<% } %>
+						</div>
+					</div>
+					<div class="p-4 rounded-lg bg-gray-50 sm:col-span-2">
+						<div class="text-xs uppercase tracking-wide text-gray-500">Drawn Numbers</div>
+						<div class="mt-1 text-lg font-mono text-gray-900">
+							<% if (round.drawn_numbers && round.drawn_numbers.length) { %>
+								<%= round.drawn_numbers.join(', ') %>
+							<% } else { %>
+								<span class="text-gray-500">-</span>
+							<% } %>
+						</div>
+					</div>
+					<div class="p-4 rounded-lg bg-gray-50">
+						<div class="text-xs uppercase tracking-wide text-gray-500">Tickets</div>
+						<div class="mt-1 text-lg font-semibold text-gray-900"><%= round.ticket_count || 0 %></div>
+					</div>
+					<div class="p-4 rounded-lg bg-gray-50">
+						<div class="text-xs uppercase tracking-wide text-gray-500">Created</div>
+						<div class="mt-1 text-lg text-gray-900"><%= round.created_at %></div>
+					</div>
+					<% if (round.is_active) { %>
+					<a href="/app/ticket/store" class="sm:col-span-2">
+                        <button type="button" id="toggleTicketForm" class="w-full inline-flex justify-center items-center px-4 py-4 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900">
+                            Create a Ticket
+                        </button>
+                    </a>
+					<% } %>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+

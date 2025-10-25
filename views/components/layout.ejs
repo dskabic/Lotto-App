@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lotto App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#4f46e5">
+  
+</head>
+<body class="min-h-screen bg-gray-50 text-gray-800">
+    <header class="sticky top-0 z-40 w-full shadow-sm bg-blue-500 text-white">
+        <div class="max-w-6xl mx-auto">
+            <nav class="px-4 sm:px-6">
+                <div class="flex items-center justify-between py-4">
+                    <a href="/" class="select-none no-underline">
+                        <span class="block font-extrabold tracking-wide text-white text-2xl sm:text-3xl">
+                            Lotto App
+                        </span>
+                    </a>
+
+                    
+                    <div class="flex items-center gap-2">
+                        <% if (isAuthenticated) { %>
+                            <a href="/logout" class="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-white/40">
+                                <%= user.nickname %> Logout
+                            </a>
+                        <% } else { %>
+                            <a href="/login" class="inline-flex items-center rounded-md bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-white/40">
+                                Login
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 pt-6 md:pt-10 pb-4 md:pb-6">
+        <%- body %>
+    </main>
+
+    
+    <footer class="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center text-sm text-gray-500">
+        <span>&copy; <span id="year"></span> Lotto App</span>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

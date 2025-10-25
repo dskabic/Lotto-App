@@ -1,0 +1,33 @@
+<div class="max-w-xl mx-auto">
+	<div class="bg-white shadow-sm border border-gray-200 rounded-xl overflow-hidden">
+		<div class="px-6 py-5 bg-gradient-to-r from-indigo-50 to-white">
+			<h2 class="text-xl sm:text-2xl font-semibold text-gray-900">Submit Ticket</h2>
+            <p class="text-sm text-gray-500 mt-1">Fill in the details below to create your ticket</p>
+		</div>
+		<div class="px-6 py-6">
+			<form action="/app/ticket/store-ticket" method="post" class="space-y-5">
+				<div>
+					<label for="identificator" class="block text-sm font-medium text-gray-700">Enter your ID or Passport Number</label>
+					<input type="text" id="identificator" name="identificator" placeholder="e.g. 12345678"  value="<%= oldData?.identificator || '' %>"  class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required />
+					<p class="mt-1 text-xs text-gray-500">Enter 1-20 characters</p>
+				</div>
+
+				<div>
+					<label for="numbers" class="block text-sm font-medium text-gray-700">Lucky Numbers (comma-separated)</label>
+					<input type="text" id="numbers" name="numbers" placeholder="e.g. 5, 12, 23, 31, 37, 44"  value="<%= oldData?.numbers || '' %>"  class="mt-1 w-full border border-gray-300 rounded-md px-3 py-2 font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" required />
+					<p class="mt-1 text-xs text-gray-500">Enter 6-10 numbers from 1 to 45</p>
+				</div>
+				<% if (typeof error !== 'undefined' && error) { %>
+ 				 <p class="text-red-500 font-semibold"><%= error %></p>
+				<% } %>
+
+				<button type="submit" class="w-full inline-flex justify-center items-center px-4 py-3 rounded-lg bg-emerald-600 text-white font-medium hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+					Submit Ticket
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+</div>
+
+
