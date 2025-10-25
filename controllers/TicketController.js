@@ -101,7 +101,7 @@ async function ticketSuccess(req, res) {
     });
     }
     const ticket = result.rows[0];
-    const ticketUrl = `${req.protocol}://${req.get('host')}/ticket/${ticket.uuid}`;
+    const ticketUrl = `${req.protocol}://${req.get('host')}/app/ticket/${ticket.uuid}`;
     let qrCodeData = null;
     try {
       qrCodeData = await QRCode.toDataURL(ticketUrl);
