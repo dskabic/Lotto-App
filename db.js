@@ -6,5 +6,6 @@ const pool = new Pool({
     database: process.env.DB_NAME || 'loto',
     password: process.env.DB_PASSWORD || '12345',
     port: parseInt(process.env.DB_PORT || '5432', 10),
+    ssl: { rejectUnauthorized: false }
 });
 module.exports = pool;
